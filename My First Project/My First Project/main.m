@@ -13,7 +13,7 @@ int main(int argc, const char * argv[]) {
         // insert code here...
         NSLog(@"Hello,This is my world!");
         int num=400;
-        num+=100;
+        num+=200;
         NSLog(@"num equals %i",num);
     }
     return 0;
