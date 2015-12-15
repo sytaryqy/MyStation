@@ -11,7 +11,10 @@
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
-        NSLog(@"Hello, World!");
+        NSLog(@"Hello,This is my world!");
+        int num=400;
+        num+=100;
+        NSLog(@"num equals %i",num);
     }
     return 0;
 }
