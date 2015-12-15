@@ -15,7 +15,23 @@ int main(int argc, const char * argv[]) {
         int guess=0;
         int turn=0;
         NSLog(@"answer=%i;guess=%i;turn=%i",answer,guess,turn);
-        
+        NSLog(@"Please input a number between 1 and 100.");
+        scanf("%i",&guess);
+        //NSLog(@"You enter the number %i",guess);
+        while (guess!=answer) {
+            if (guess>answer) {
+                NSLog(@"The guess is too high!");
+            }
+            if (guess<answer) {
+                NSLog(@"The guess is too lower!");
+            }
+            NSLog(@"Please input a number between 1 and 100 again.");
+            scanf("%i",&guess);
+        }
+        if (guess==answer) {
+            NSLog(@"You are right! The answer is %i",answer);
+        }
+       
     }
     return 0;
 }
