@@ -37,9 +37,23 @@ int main(int argc, const char * argv[]) {
         ////NSString  *stringShwoLength =[NSString stringWithCString:cstringl encoding:1];
         //NSLog(@"The word you inputed is %@.The length of the word is %li",stringShwoLength,[stringShwoLength length]);
         
-        Person *newPerson=[[Person alloc] init];
-        [newPerson enterInfo];
-        [newPerson printInfo];
+        //test object
+        //Person *newPerson=[[Person alloc] init];
+        //[newPerson enterInfo];
+        //[newPerson printInfo];
+        
+        //do-while
+        char response;
+        
+        do{
+            Person *newPerson=[[Person alloc]init];
+            [newPerson enterInfo];
+            [newPerson printInfo];
+            
+            NSLog(@"Do you want to enter another name?y/n");
+            scanf("\n%c",&response);
+            
+        }while (response=='y');
         
     }
     return 0;
