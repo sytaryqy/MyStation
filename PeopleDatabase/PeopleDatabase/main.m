@@ -7,27 +7,40 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Person.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
         
-        NSString *helloWorld=@"Hello, World!";
-        NSLog(@"%@",helloWorld);
+        //NSString *helloWorld=@"Hello, World!";
+        //NSLog(@"%@",helloWorld);
         
         //use nsstring object show the string.
-        int i=10;
-        NSString *stringShow=[NSString stringWithFormat:@"The number is %i",i];
-        NSLog(@"%@",stringShow);
+        //int i=10;
+        //NSString *stringShow=[NSString stringWithFormat:@"The number is %i",i];
+        //NSLog(@"%@",stringShow);
         
         //scanf can only used in int/char/float/bool
         
         //How to use scanf load the words.
-        NSLog(@"Please input a word.");
-        char cstring[40];
-        scanf("%s",cstring);
-        NSString  *stringInput=[NSString stringWithCString:cstring encoding:1];
-        NSLog(@"%@",stringInput);
+        //NSLog(@"Please input a word.");
+        //char cstring[40];
+        //scanf("%s",cstring);
+        //NSString  *stringInput=[NSString stringWithCString:cstring encoding:1];
+        //NSLog(@"%@",stringInput);
+        
+        //Using NSString class show the cstring's length
+        //NSLog(@"Please input a word.");
+        //char cstringl[40];
+        //scanf("%s",cstringl);
+        ////NSString  *stringShwoLength =[NSString stringWithCString:cstringl encoding:1];
+        //NSLog(@"The word you inputed is %@.The length of the word is %li",stringShwoLength,[stringShwoLength length]);
+        
+        Person *newPerson=[[Person alloc] init];
+        [newPerson enterInfo];
+        [newPerson printInfo];
+        
     }
     return 0;
 }

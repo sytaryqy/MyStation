@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C4B53AC1C23B0CD00A00A97 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4B53AB1C23B0CD00A00A97 /* Person.m */; };
 		4CD899181C219BD900463B7C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD899171C219BD900463B7C /* main.m */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +24,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4C4B53AA1C23B0CD00A00A97 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		4C4B53AB1C23B0CD00A00A97 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 		4CD899141C219BD900463B7C /* PeopleDatabase */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = PeopleDatabase; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CD899171C219BD900463B7C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +61,8 @@
 			isa = PBXGroup;
 			children = (
 				4CD899171C219BD900463B7C /* main.m */,
+				4C4B53AA1C23B0CD00A00A97 /* Person.h */,
+				4C4B53AB1C23B0CD00A00A97 /* Person.m */,
 			);
 			path = PeopleDatabase;
 			sourceTree = "<group>";
@@ -118,6 +123,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C4B53AC1C23B0CD00A00A97 /* Person.m in Sources */,
 				4CD899181C219BD900463B7C /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -237,6 +243,7 @@
 				4CD8991D1C219BD900463B7C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
