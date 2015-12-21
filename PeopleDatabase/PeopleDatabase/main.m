@@ -44,17 +44,27 @@ int main(int argc, const char * argv[]) {
         
         //do-while
         char response;
+        NSMutableArray *persons=[[NSMutableArray alloc]init];
         
         do{
             Person *newPerson=[[Person alloc]init];
             [newPerson enterInfo];
             [newPerson printInfo];
+            [persons addObject:newPerson];
             
             NSLog(@"Do you want to enter another name?y/n");
             scanf("\n%c",&response);
             
         }while (response=='y');
         
+        NSLog(@"Number of persons in database: %li",[persons count]);
+        //for (int i=0; i<[persons count]; i++) {
+        //    NSLog(@"");
+        //}
+        
+        for (Person *onePerson in persons) {
+            [onePerson printInfo];
+         }
     }
     return 0;
 }
