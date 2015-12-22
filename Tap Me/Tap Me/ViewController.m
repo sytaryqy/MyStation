@@ -25,7 +25,21 @@
 }
 
 -(IBAction)buttonPressed{
-    NSLog(@"Pressed!");
+    //NSLog(@"Pressed!");
+    //scoreLabel.text=@"Pressed";
+    count++;
+    scoreLabel.text=[NSString stringWithFormat:@"SCORE\n%i",count];
+}
+
+-(void)initalizeGame{
+    //1.initalize the variables
+    count=0;
+    seconds=30;
+    //2.display the value in the lable
+    scoreLabel.text=[NSString stringWithFormat:@"SCORE\n%i",count];
+    timerLabel.text=[NSString stringWithFormat:@"Time:%i",seconds];
+    //3.set the timer
+    timer=[NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(subtract) userInfo:nil repeats:YES<#(BOOL)#> ];
 }
 
 @end

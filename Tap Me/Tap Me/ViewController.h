@@ -11,6 +11,11 @@
 @interface ViewController : UIViewController{
     IBOutlet UILabel *scoreLabel;
     IBOutlet UILabel *timerLabel;
+    
+    //add another three variables
+    NSInteger count;
+    NSInteger seconds;
+    NSTimer *timer;
 }
 
 -(IBAction)buttonPressed;
