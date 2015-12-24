@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface ViewController : UIViewController{
     IBOutlet UILabel *scoreLabel;
@@ -16,6 +17,10 @@
     NSInteger count;
     NSInteger seconds;
     NSTimer *timer;
+    
+    AVAudioPlayer *backgroundSound;
+    AVAudioPlayer *timeSound;
+    AVAudioPlayer *pressSound;
 }
 
 -(IBAction)buttonPressed;

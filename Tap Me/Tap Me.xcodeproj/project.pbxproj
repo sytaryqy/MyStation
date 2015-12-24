@@ -30,6 +30,7 @@
 		4CFF12861C2BCB8C0057A804 /* field_time@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CFF12751C2BCB8C0057A804 /* field_time@2x.png */; };
 		4CFF12871C2BCB8C0057A804 /* HallOfTheMountainKing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4CFF12761C2BCB8C0057A804 /* HallOfTheMountainKing.mp3 */; };
 		4CFF12881C2BCB8C0057A804 /* SecondBeep.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4CFF12771C2BCB8C0057A804 /* SecondBeep.wav */; };
+		4CFF128A1C2BEA860057A804 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CFF12891C2BEA860057A804 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		4CFF12751C2BCB8C0057A804 /* field_time@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "field_time@2x.png"; sourceTree = "<group>"; };
 		4CFF12761C2BCB8C0057A804 /* HallOfTheMountainKing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = HallOfTheMountainKing.mp3; sourceTree = "<group>"; };
 		4CFF12771C2BCB8C0057A804 /* SecondBeep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = SecondBeep.wav; sourceTree = "<group>"; };
+		4CFF12891C2BEA860057A804 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CFF128A1C2BEA860057A804 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +79,7 @@
 		4C01C30A1C27C99C00EAEE46 = {
 			isa = PBXGroup;
 			children = (
+				4CFF12891C2BEA860057A804 /* AVFoundation.framework */,
 				4C01C3151C27C99C00EAEE46 /* Tap Me */,
 				4C01C3141C27C99C00EAEE46 /* Products */,
 			);

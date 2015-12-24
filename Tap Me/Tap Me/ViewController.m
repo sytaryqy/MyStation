@@ -14,9 +14,15 @@
 
 @implementation ViewController
 
+-(AVAudioPlayer *)setupAudioPlayerWithFile:(NSString *)file type:(NSString *) type{
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+
+    self.view.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_tile.png"]];
     [self initalizeGame];
 }
 
@@ -29,7 +35,7 @@
     //NSLog(@"Pressed!");
     //scoreLabel.text=@"Pressed";
     count++;
-    scoreLabel.text=[NSString stringWithFormat:@"SCORE\n%i",count];
+    scoreLabel.text=[NSString stringWithFormat:@"SCORE\n%li",(long)count];
 }
 
 -(void)initalizeGame{
@@ -37,8 +43,8 @@
     count=0;
     seconds=30;
     //2.display the value in the lable
-    scoreLabel.text=[NSString stringWithFormat:@"SCORE\n%i",count];
-    timerLabel.text=[NSString stringWithFormat:@"Time:%i",seconds];
+    scoreLabel.text=[NSString stringWithFormat:@"SCORE\n%li",(long)count];
+    timerLabel.text=[NSString stringWithFormat:@"Time:%li",(long)seconds];
     //3.set the timer
     timer=[NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(subtractTimer) userInfo:nil repeats:YES ];
 }
@@ -46,7 +52,7 @@
 -(void)subtractTimer{
     //1.change the seconds and the timerLable's text
     seconds--;
-    timerLabel.text=[NSString stringWithFormat:@"Time:%i",seconds];
+    timerLabel.text=[NSString stringWithFormat:@"Time:%li",(long)seconds];
     
     //2.if seconds equal 0 ,we need invalidate≈ the timer.
     if (seconds==0) {
@@ -54,7 +60,7 @@
     
     
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"My Alert"
-                                                                   message:[NSString stringWithFormat: @"Your score is %i",count]
+                                                                   message:[NSString stringWithFormat: @"Your score is %li",(long)count]
                                                             preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"Play Again" style:UIAlertActionStyleDefault
