@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    [self initalizeGame];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,7 +40,30 @@
     scoreLabel.text=[NSString stringWithFormat:@"SCORE\n%i",count];
     timerLabel.text=[NSString stringWithFormat:@"Time:%i",seconds];
     //3.set the timer
-    timer=[NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(subtract) userInfo:nil repeats:YES<#(BOOL)#> ];
+    timer=[NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(subtractTimer) userInfo:nil repeats:YES ];
+}
+
+-(void)subtractTimer{
+    //1.change the seconds and the timerLable's text
+    seconds--;
+    timerLabel.text=[NSString stringWithFormat:@"Time:%i",seconds];
+    
+    //2.if seconds equal 0 ,we need invalidate≈ the timer.
+    if (seconds==0) {
+        [timer invalidate];
+    
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"My Alert"
+                                                                   message:[NSString stringWithFormat: @"Your score is %i",count]
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"Play Again" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {[self initalizeGame];}];
+    
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated:YES completion:nil];
+        }
+    
 }
 
 @end
