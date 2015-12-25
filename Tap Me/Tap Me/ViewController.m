@@ -15,7 +15,18 @@
 @implementation ViewController
 
 -(AVAudioPlayer *)setupAudioPlayerWithFile:(NSString *)file type:(NSString *) type{
+    NSString *path=[[NSBundle mainBundle] pathForResource:file ofType:type];
     
+    NSURL *url= [NSURL fileURLWithPath:path];
+    NSError *error;
+    
+    AVAudioPlayer *audioPlayer=[[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+    
+    if(!audioPlayer){
+        NSLog(@"%@",[error debugDescription]);
+    }
+    
+    return audioPlayer;
 }
 
 - (void)viewDidLoad {
@@ -23,6 +34,9 @@
     // Do any additional setup after loading the view, typically from a nib.
 
     self.view.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_tile.png"]];
+    backgroundSound=[self setupAudioPlayerWithFile:@"HallOfTheMountainKing" type:(@"mp3")];
+    timeSound=[self setupAudioPlayerWithFile:@"SecondBeep" type:@"wav"];
+    pressSound=[self setupAudioPlayerWithFile:@"ButtonTap" type:@"wav"];
     [self initalizeGame];
 }
 
@@ -35,6 +49,7 @@
     //NSLog(@"Pressed!");
     //scoreLabel.text=@"Pressed";
     count++;
+    [pressSound play];
     scoreLabel.text=[NSString stringWithFormat:@"SCORE\n%li",(long)count];
 }
 
@@ -47,11 +62,14 @@
     timerLabel.text=[NSString stringWithFormat:@"Time:%li",(long)seconds];
     //3.set the timer
     timer=[NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(subtractTimer) userInfo:nil repeats:YES ];
+    [backgroundSound setVolume:3.0f];
+    [backgroundSound play];
 }
 
 -(void)subtractTimer{
     //1.change the seconds and the timerLable's text
     seconds--;
+    [timeSound play];
     timerLabel.text=[NSString stringWithFormat:@"Time:%li",(long)seconds];
     
     //2.if seconds equal 0 ,we need invalidate≈ the timer.
