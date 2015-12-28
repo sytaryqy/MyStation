@@ -62,7 +62,7 @@
     timerLabel.text=[NSString stringWithFormat:@"Time:%li",(long)seconds];
     //3.set the timer
     timer=[NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(subtractTimer) userInfo:nil repeats:YES ];
-    [backgroundSound setVolume:3.0f];
+    [backgroundSound setVolume:0.3f];
     [backgroundSound play];
 }
 
