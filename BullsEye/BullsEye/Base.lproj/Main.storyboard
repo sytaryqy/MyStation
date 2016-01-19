@@ -48,10 +48,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kYL-pl-btm">
-                                <rect key="frame" x="56" y="227" width="75" height="30"/>
-                                <state key="normal" title="Start Over"/>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="opl-4d-JX6">
                                 <rect key="frame" x="471" y="230" width="22" height="22"/>
                             </button>
@@ -85,12 +81,19 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kYL-pl-btm">
+                                <rect key="frame" x="56" y="227" width="75" height="30"/>
+                                <state key="normal" title="Start Over"/>
+                                <connections>
+                                    <action selector="restartGame" destination="BYZ-38-t0r" eventType="touchUpInside" id="WT8-CX-Lsb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
-                        <outlet property="roundLabel" destination="vHl-IE-MXR" id="iUR-7j-kGk"/>
+                        <outlet property="roundLabel" destination="vHl-IE-MXR" id="TC4-gH-P7o"/>
                         <outlet property="scoreLabel" destination="kmF-HF-HmN" id="WD4-RP-ouB"/>
                         <outlet property="slider" destination="1XV-Vk-Fgh" id="CME-AI-hLA"/>
                         <outlet property="targetLabel" destination="Goa-W7-s79" id="8k1-7l-89b"/>

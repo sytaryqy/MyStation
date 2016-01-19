@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     var currentSliderValue=0
     var targetValue=0
     var score=0
-    var rounds = -1
+    var rounds = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,11 +66,14 @@ class ViewController: UIViewController {
         }
 //        let message="The value of the slider is: \(currentSliderValue)"+"\nThe target value is: \(targetValue)"+"\nThe difference value is:\(difference)"
         let alert=UIAlertController (title: playerMessage, message: message, preferredStyle: .Alert)
-        let action=UIAlertAction (title: "OK", style: .Default, handler: nil)
+        let action=UIAlertAction (title: "OK", style: .Default, handler: {
+            action in self.startNewRound()
+            self.updateLabel()
+        })
         alert.addAction(action)
         presentViewController(alert, animated: true, completion: nil)
-        startNewRound()
-        updateLabel()
+//        startNewRound()
+//        updateLabel()
     }
     
     @IBAction func sliderMoved(slider:UISlider){
@@ -89,6 +92,26 @@ class ViewController: UIViewController {
         targetLabel.text=String(targetValue)
         scoreLabel.text=String(score)
         roundLabel.text=String(rounds)
+    }
+    
+    @IBAction func restartGame(){
+        let message = "Are you sure you want restart the game?"
+        let alert=UIAlertController (title: "RestartGame", message: message, preferredStyle: .Alert)
+        let actionYes=UIAlertAction (title: "Yes", style: .Default, handler: {
+            action in self.resetGameDatas()
+        })
+        let actionCancel=UIAlertAction(title: "Cancel", style: .Default, handler: nil)
+        alert.addAction(actionYes)
+        alert.addAction(actionCancel)
+        presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func resetGameDatas(){
+        score = 0
+        rounds = 0
+        startNewRound()
+        updateLabel()
+        
     }
 
 
