@@ -50,6 +50,9 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="opl-4d-JX6">
                                 <rect key="frame" x="471" y="230" width="22" height="22"/>
+                                <connections>
+                                    <segue destination="Mit-YF-CVQ" kind="modal" id="0x0-yZ-yle"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="99999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmF-HF-HmN">
                                 <rect key="frame" x="216" y="231" width="55" height="21"/>
@@ -102,6 +105,42 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="152" y="259"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="63s-9Y-lpY">
+            <objects>
+                <viewController id="Mit-YF-CVQ" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jSe-vY-OTq"/>
+                        <viewControllerLayoutGuide type="bottom" id="IhH-dd-IZY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="z7y-lo-p2U">
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Kd-if-1P7">
+                                <rect key="frame" x="261" y="231" width="46" height="30"/>
+                                <state key="normal" title="Close"/>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0SG-zy-eFX">
+                                <rect key="frame" x="20" y="28" width="528" height="195"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <mutableString key="text">                                                     *** Bull’s Eye ***
+
+    Welcome to the awesome game of Bull’s Eye where you can win points and fame by dragging a slider. 
+
+    Your goal is to place the slider as close as possible to the target value. The closer you are, the more points you score. Enjoy!</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Kj-Lx-aSN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="752" y="259"/>
         </scene>
     </scenes>
 </document>
