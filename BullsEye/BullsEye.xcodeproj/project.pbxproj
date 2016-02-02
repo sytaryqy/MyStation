@@ -13,6 +13,7 @@
 		4CEE61B11C2D38DE003BE759 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CEE61B01C2D38DE003BE759 /* Assets.xcassets */; };
 		4CEE61B41C2D38DE003BE759 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CEE61B21C2D38DE003BE759 /* LaunchScreen.storyboard */; };
 		4CFB31721C5F36F500C365E7 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFB31711C5F36F500C365E7 /* AboutViewController.swift */; };
+		4CFF22621C60878800885E2C /* BullsEye.html in Resources */ = {isa = PBXBuildFile; fileRef = 4CFF22611C60878800885E2C /* BullsEye.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		4CEE61B31C2D38DE003BE759 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4CEE61B51C2D38DE003BE759 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CFB31711C5F36F500C365E7 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		4CFF22611C60878800885E2C /* BullsEye.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = BullsEye.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		4CEE61A81C2D38DE003BE759 /* BullsEye */ = {
 			isa = PBXGroup;
 			children = (
+				4CFF22611C60878800885E2C /* BullsEye.html */,
 				4CEE61A91C2D38DE003BE759 /* AppDelegate.swift */,
 				4CEE61AB1C2D38DE003BE759 /* ViewController.swift */,
 				4CEE61AD1C2D38DE003BE759 /* Main.storyboard */,
@@ -126,6 +129,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CEE61B41C2D38DE003BE759 /* LaunchScreen.storyboard in Resources */,
+				4CFF22621C60878800885E2C /* BullsEye.html in Resources */,
 				4CEE61B11C2D38DE003BE759 /* Assets.xcassets in Resources */,
 				4CEE61AF1C2D38DE003BE759 /* Main.storyboard in Resources */,
 			);
