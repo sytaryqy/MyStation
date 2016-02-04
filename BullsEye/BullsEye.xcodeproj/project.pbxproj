@@ -11,8 +11,9 @@
 		4CEE61AC1C2D38DE003BE759 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEE61AB1C2D38DE003BE759 /* ViewController.swift */; };
 		4CEE61AF1C2D38DE003BE759 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CEE61AD1C2D38DE003BE759 /* Main.storyboard */; };
 		4CEE61B11C2D38DE003BE759 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CEE61B01C2D38DE003BE759 /* Assets.xcassets */; };
-		4CEE61B41C2D38DE003BE759 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CEE61B21C2D38DE003BE759 /* LaunchScreen.storyboard */; };
 		4CFB31721C5F36F500C365E7 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFB31711C5F36F500C365E7 /* AboutViewController.swift */; };
+		4CFD5BB51C6345B10097CBA2 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CFD5BB31C6345B10097CBA2 /* Default-568h@2x.png */; };
+		4CFD5BB61C6345B10097CBA2 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CFD5BB41C6345B10097CBA2 /* Default@2x.png */; };
 		4CFF22621C60878800885E2C /* BullsEye.html in Resources */ = {isa = PBXBuildFile; fileRef = 4CFF22611C60878800885E2C /* BullsEye.html */; };
 /* End PBXBuildFile section */
 
@@ -22,9 +23,10 @@
 		4CEE61AB1C2D38DE003BE759 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4CEE61AE1C2D38DE003BE759 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4CEE61B01C2D38DE003BE759 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		4CEE61B31C2D38DE003BE759 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4CEE61B51C2D38DE003BE759 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CFB31711C5F36F500C365E7 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		4CFD5BB31C6345B10097CBA2 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		4CFD5BB41C6345B10097CBA2 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		4CFF22611C60878800885E2C /* BullsEye.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = BullsEye.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -58,13 +60,14 @@
 		4CEE61A81C2D38DE003BE759 /* BullsEye */ = {
 			isa = PBXGroup;
 			children = (
+				4CFD5BB31C6345B10097CBA2 /* Default-568h@2x.png */,
+				4CFD5BB41C6345B10097CBA2 /* Default@2x.png */,
 				4CFF22611C60878800885E2C /* BullsEye.html */,
 				4CEE61A91C2D38DE003BE759 /* AppDelegate.swift */,
 				4CEE61AB1C2D38DE003BE759 /* ViewController.swift */,
 				4CEE61AD1C2D38DE003BE759 /* Main.storyboard */,
 				4CFB31711C5F36F500C365E7 /* AboutViewController.swift */,
 				4CEE61B01C2D38DE003BE759 /* Assets.xcassets */,
-				4CEE61B21C2D38DE003BE759 /* LaunchScreen.storyboard */,
 				4CEE61B51C2D38DE003BE759 /* Info.plist */,
 			);
 			path = BullsEye;
@@ -128,8 +131,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CEE61B41C2D38DE003BE759 /* LaunchScreen.storyboard in Resources */,
 				4CFF22621C60878800885E2C /* BullsEye.html in Resources */,
+				4CFD5BB51C6345B10097CBA2 /* Default-568h@2x.png in Resources */,
+				4CFD5BB61C6345B10097CBA2 /* Default@2x.png in Resources */,
 				4CEE61B11C2D38DE003BE759 /* Assets.xcassets in Resources */,
 				4CEE61AF1C2D38DE003BE759 /* Main.storyboard in Resources */,
 			);
@@ -157,14 +161,6 @@
 				4CEE61AE1C2D38DE003BE759 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		4CEE61B21C2D38DE003BE759 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4CEE61B31C2D38DE003BE759 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
