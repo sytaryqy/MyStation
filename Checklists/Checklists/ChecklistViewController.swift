@@ -108,7 +108,7 @@ class ChecklistViewController: UITableViewController {
 
     override func tableView(tableView: UITableView,
         numberOfRowsInSection section: Int) -> Int {
-            return 5
+            return items.count
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -192,6 +192,7 @@ class ChecklistViewController: UITableViewController {
             }
             */
             
+            /*
             if indexPath.row == 0 {
                 items[0].checked = !items[0].checked
             }
@@ -207,6 +208,10 @@ class ChecklistViewController: UITableViewController {
             if indexPath.row == 4 {
                 items[4].checked = !items[4].checked
             }
+            */
+            
+            let item = items[indexPath.row]
+            item.checked = !item.checked
             
             configCheckmarkForCell(cell, indexPath: indexPath)
 
@@ -220,7 +225,12 @@ class ChecklistViewController: UITableViewController {
             let cell =
             tableView.dequeueReusableCellWithIdentifier("ChecklistItem")! as UITableViewCell
             
+            let item = items[indexPath.row]
+            
             let label = cell.viewWithTag(1000) as! UILabel
+            label.text = item.text
+            
+            /*
             if indexPath.row  == 0 {
                 label.text = items[0].text
             } else if indexPath.row  == 1 {
@@ -232,6 +242,7 @@ class ChecklistViewController: UITableViewController {
             } else if indexPath.row  == 4 {
                 label.text = items[4].text
             }
+            */
             
             configCheckmarkForCell(cell, indexPath: indexPath)
             
@@ -240,6 +251,12 @@ class ChecklistViewController: UITableViewController {
     
     func configCheckmarkForCell(cell:UITableViewCell,indexPath:NSIndexPath){
         var isChecked = false;
+        
+        let item = items[indexPath.row]
+        
+        isChecked = item.checked
+        
+        /*
         if indexPath.row == 0 {
             isChecked = items[0].checked
         }
@@ -255,6 +272,8 @@ class ChecklistViewController: UITableViewController {
         if indexPath.row == 4 {
             isChecked = items[4].checked
         }
+        */
+        
         if isChecked{
             cell.accessoryType = .Checkmark
         }else{
