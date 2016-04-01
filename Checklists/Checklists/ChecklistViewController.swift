@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChecklistViewController: UITableViewController {
+class ChecklistViewController: UITableViewController , AddItemViewControllerDelegate{
     
     @IBAction func addItem(){
         
@@ -21,6 +21,15 @@ class ChecklistViewController: UITableViewController {
         let indexPath = NSIndexPath(forRow: newRowIndex, inSection: 0)
         let indexPaths = [indexPath]
         tableView.insertRowsAtIndexPaths(indexPaths,withRowAnimation: .Automatic)
+    }
+    
+    func addItemViewControllerDidCancel(controller: AddItemTableViewController) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func addItemViewController(controller: AddItemTableViewController,
+        didFinishAddItem item: ChecklistItem) {
+            dismissViewControllerAnimated(true, completion: nil)
     }
     
     /*
@@ -117,6 +126,20 @@ class ChecklistViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // 1
+        if segue.identifier == "AddItem" {
+            // 2
+            let navigationController = segue.destinationViewController
+                as! UINavigationController
+            // 3
+            let controller = navigationController.topViewController
+                as! AddItemTableViewController
+            // 4
+            controller.delegate = self
+        }
     }
 
     override func tableView(tableView: UITableView,
