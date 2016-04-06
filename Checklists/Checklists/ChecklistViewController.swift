@@ -10,6 +10,7 @@ import UIKit
 
 class ChecklistViewController: UITableViewController , AddItemViewControllerDelegate{
     
+    /*
     @IBAction func addItem(){
         
         let newRowIndex = items.count
@@ -22,16 +23,38 @@ class ChecklistViewController: UITableViewController , AddItemViewControllerDele
         let indexPaths = [indexPath]
         tableView.insertRowsAtIndexPaths(indexPaths,withRowAnimation: .Automatic)
     }
+    */
     
     func addItemViewControllerDidCancel(controller: AddItemTableViewController) {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
     func addItemViewController(controller: AddItemTableViewController,
-        didFinishAddItem item: ChecklistItem) {
+        didFinishAddingItem item: ChecklistItem) {
+            
+            let newRowIndex = items.count
+            
+            items.append(item)
+            
+            let indexPath = NSIndexPath(forRow: newRowIndex, inSection: 0)
+            let indexPaths = [indexPath]
+            
+            tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
+            
             dismissViewControllerAnimated(true, completion: nil)
     }
     
+    func addItemViewController(controller: AddItemTableViewController,
+        didFinishEditingItem item: ChecklistItem){
+            
+            if let index = find(items ,item) {
+                let indexPath = NSIndexPath(forRow: index, inSection: 0)
+                if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+                    configureTextForCell(cell, withChecklistItem: item)
+                }
+            }
+            dismissViewControllerAnimated(true, completion: nil)
+    }
     /*
     var row0text = "Walk the dog"
     var row1text = "Brush teeth"
@@ -129,17 +152,31 @@ class ChecklistViewController: UITableViewController , AddItemViewControllerDele
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // 1
+        // 1 Find the destination segue named AddItem
         if segue.identifier == "AddItem" {
-            // 2
+            // 2 Convert the segue's destinationViewController to navigationController because the segue will first to  the UINavigationController of AddItemView
             let navigationController = segue.destinationViewController
                 as! UINavigationController
-            // 3
+            // 3 Get the AddItemTableViewController
             let controller = navigationController.topViewController
                 as! AddItemTableViewController
-            // 4
+            // 4 Set the AddItemTableViewController's delegate to ChecklistViewController
             controller.delegate = self
+        }else if segue.identifier == "EditItem" {
+            // 2 Convert the segue's destinationViewController to navigationController because the segue will first to  the UINavigationController of AddItemView
+            let navigationController = segue.destinationViewController
+                as! UINavigationController
+            // 3 Get the AddItemTableViewController
+            let controller = navigationController.topViewController
+                as! AddItemTableViewController
+            // 4 Set the AddItemTableViewController's delegate to ChecklistViewController
+            controller.delegate = self
+            
+            if let indexPath = tableView.indexPathForCell(sender as! UITableViewCell){
+                controller.itemToEdit = items[indexPath.row]
+            }
         }
+        
     }
 
     override func tableView(tableView: UITableView,
@@ -274,7 +311,7 @@ class ChecklistViewController: UITableViewController , AddItemViewControllerDele
             
             let item = items[indexPath.row]
             
-            configTextForCell(cell, withChecklistItem: item)
+            configureTextForCell(cell, withChecklistItem: item)
             
             /*
             if indexPath.row  == 0 {
@@ -296,12 +333,13 @@ class ChecklistViewController: UITableViewController , AddItemViewControllerDele
     }
     
     func configCheckmarkForCell(cell:UITableViewCell,indexPath:NSIndexPath){
-        var isChecked = false;
+        //var isChecked = false;
         
         let item = items[indexPath.row]
         
-        isChecked = item.checked
+        //isChecked = item.checked
         
+        let label = cell.viewWithTag(1001) as! UILabel
         /*
         if indexPath.row == 0 {
             isChecked = items[0].checked
@@ -318,16 +356,22 @@ class ChecklistViewController: UITableViewController , AddItemViewControllerDele
         if indexPath.row == 4 {
             isChecked = items[4].checked
         }
-        */
+
         
         if isChecked{
             cell.accessoryType = .Checkmark
         }else{
             cell.accessoryType = .None
         }
+        */
+        if  item.checked{
+            label.text = "√"
+        }else{
+            label.text = ""
+        }
     }
     
-    func configTextForCell(cell:UITableViewCell,withChecklistItem item:ChecklistItem){
+    func configureTextForCell(cell:UITableViewCell,withChecklistItem item:ChecklistItem){
         let label = cell.viewWithTag(1000) as! UILabel
         label.text = item.text
     }
