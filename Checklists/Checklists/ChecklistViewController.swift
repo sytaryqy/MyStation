@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChecklistViewController: UITableViewController , AddItemViewControllerDelegate{
+class ChecklistViewController: UITableViewController , ItemDetailViewControllerDelegate{
     
     /*
     @IBAction func addItem(){
@@ -25,11 +25,11 @@ class ChecklistViewController: UITableViewController , AddItemViewControllerDele
     }
     */
     
-    func addItemViewControllerDidCancel(controller: ItemDetailViewController) {
+    func itemDetailViewControllerDidCancel(controller: ItemDetailViewController) {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func addItemViewController(controller: ItemDetailViewController,
+    func itemDetailViewController(controller: ItemDetailViewController,
         didFinishAddingItem item: ChecklistItem) {
             
             let newRowIndex = items.count
@@ -44,7 +44,7 @@ class ChecklistViewController: UITableViewController , AddItemViewControllerDele
             dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func addItemViewController(controller: ItemDetailViewController,
+    func itemDetailViewController(controller: ItemDetailViewController,
         didFinishEditingItem item: ChecklistItem){
             //if let index = items.indexOf(item){
             if let index = find(items ,toFindItem: item) {
