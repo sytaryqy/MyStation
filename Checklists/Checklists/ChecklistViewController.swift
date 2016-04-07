@@ -25,11 +25,11 @@ class ChecklistViewController: UITableViewController , AddItemViewControllerDele
     }
     */
     
-    func addItemViewControllerDidCancel(controller: AddItemTableViewController) {
+    func addItemViewControllerDidCancel(controller: ItemDetailViewController) {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func addItemViewController(controller: AddItemTableViewController,
+    func addItemViewController(controller: ItemDetailViewController,
         didFinishAddingItem item: ChecklistItem) {
             
             let newRowIndex = items.count
@@ -44,10 +44,10 @@ class ChecklistViewController: UITableViewController , AddItemViewControllerDele
             dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func addItemViewController(controller: AddItemTableViewController,
+    func addItemViewController(controller: ItemDetailViewController,
         didFinishEditingItem item: ChecklistItem){
-            
-            if let index = find(items ,item) {
+            //if let index = items.indexOf(item){
+            if let index = find(items ,toFindItem: item) {
                 let indexPath = NSIndexPath(forRow: index, inSection: 0)
                 if let cell = tableView.cellForRowAtIndexPath(indexPath) {
                     configureTextForCell(cell, withChecklistItem: item)
@@ -157,19 +157,19 @@ class ChecklistViewController: UITableViewController , AddItemViewControllerDele
             // 2 Convert the segue's destinationViewController to navigationController because the segue will first to  the UINavigationController of AddItemView
             let navigationController = segue.destinationViewController
                 as! UINavigationController
-            // 3 Get the AddItemTableViewController
+            // 3 Get the ItemDetailViewController
             let controller = navigationController.topViewController
-                as! AddItemTableViewController
-            // 4 Set the AddItemTableViewController's delegate to ChecklistViewController
+                as! ItemDetailViewController
+            // 4 Set the ItemDetailViewController's delegate to ChecklistViewController
             controller.delegate = self
         }else if segue.identifier == "EditItem" {
             // 2 Convert the segue's destinationViewController to navigationController because the segue will first to  the UINavigationController of AddItemView
             let navigationController = segue.destinationViewController
                 as! UINavigationController
-            // 3 Get the AddItemTableViewController
+            // 3 Get the ItemDetailViewController
             let controller = navigationController.topViewController
-                as! AddItemTableViewController
-            // 4 Set the AddItemTableViewController's delegate to ChecklistViewController
+                as! ItemDetailViewController
+            // 4 Set the ItemDetailViewController's delegate to ChecklistViewController
             controller.delegate = self
             
             if let indexPath = tableView.indexPathForCell(sender as! UITableViewCell){
@@ -377,6 +377,9 @@ class ChecklistViewController: UITableViewController , AddItemViewControllerDele
     }
     
 
+    func find(items:[ChecklistItem],toFindItem item:ChecklistItem)->Int?{
+        return items.indexOf(item)
+    }
 
 }
 
