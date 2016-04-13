@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C0F45501CBCE8D300F569EE /* Checklist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0F454F1CBCE8D300F569EE /* Checklist.swift */; };
 		4C90F7ED1CAA5894000EDA7A /* ChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C90F7EC1CAA5894000EDA7A /* ChecklistItem.swift */; };
+		4CF497E81CBCD8F500A974A6 /* AllListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF497E71CBCD8F500A974A6 /* AllListsViewController.swift */; };
+		4CF50F251CBE2530002EF7F7 /* ListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF50F241CBE2530002EF7F7 /* ListDetailViewController.swift */; };
 		4CFB8CAB1CABAD740045179E /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFB8CAA1CABAD740045179E /* ItemDetailViewController.swift */; };
 		4CFD5BC41C646EF00097CBA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFD5BC31C646EF00097CBA2 /* AppDelegate.swift */; };
 		4CFD5BC61C646EF00097CBA2 /* ChecklistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFD5BC51C646EF00097CBA2 /* ChecklistViewController.swift */; };
@@ -17,7 +20,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C0F454F1CBCE8D300F569EE /* Checklist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Checklist.swift; sourceTree = "<group>"; };
 		4C90F7EC1CAA5894000EDA7A /* ChecklistItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChecklistItem.swift; sourceTree = "<group>"; };
+		4CF497E71CBCD8F500A974A6 /* AllListsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllListsViewController.swift; sourceTree = "<group>"; };
+		4CF50F241CBE2530002EF7F7 /* ListDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListDetailViewController.swift; sourceTree = "<group>"; };
 		4CFB8CAA1CABAD740045179E /* ItemDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ItemDetailViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		4CFD5BC01C646EF00097CBA2 /* Checklists.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Checklists.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CFD5BC31C646EF00097CBA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -61,11 +67,14 @@
 				4CFD5BC31C646EF00097CBA2 /* AppDelegate.swift */,
 				4CFD5BC51C646EF00097CBA2 /* ChecklistViewController.swift */,
 				4CFD5BC71C646EF00097CBA2 /* Main.storyboard */,
+				4CF497E71CBCD8F500A974A6 /* AllListsViewController.swift */,
 				4CFD5BCA1C646EF00097CBA2 /* Assets.xcassets */,
 				4CFD5BCC1C646EF00097CBA2 /* LaunchScreen.storyboard */,
 				4CFD5BCF1C646EF00097CBA2 /* Info.plist */,
 				4C90F7EC1CAA5894000EDA7A /* ChecklistItem.swift */,
 				4CFB8CAA1CABAD740045179E /* ItemDetailViewController.swift */,
+				4C0F454F1CBCE8D300F569EE /* Checklist.swift */,
+				4CF50F241CBE2530002EF7F7 /* ListDetailViewController.swift */,
 			);
 			path = Checklists;
 			sourceTree = "<group>";
@@ -142,8 +151,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CFB8CAB1CABAD740045179E /* ItemDetailViewController.swift in Sources */,
+				4CF50F251CBE2530002EF7F7 /* ListDetailViewController.swift in Sources */,
 				4CFD5BC61C646EF00097CBA2 /* ChecklistViewController.swift in Sources */,
+				4C0F45501CBCE8D300F569EE /* Checklist.swift in Sources */,
 				4C90F7ED1CAA5894000EDA7A /* ChecklistItem.swift in Sources */,
+				4CF497E81CBCD8F500A974A6 /* AllListsViewController.swift in Sources */,
 				4CFD5BC41C646EF00097CBA2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

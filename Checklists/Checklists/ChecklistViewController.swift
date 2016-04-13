@@ -42,6 +42,8 @@ class ChecklistViewController: UITableViewController , ItemDetailViewControllerD
             tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
             
             dismissViewControllerAnimated(true, completion: nil)
+            
+            saveChecklistItems()
     }
     
     func itemDetailViewController(controller: ItemDetailViewController,
@@ -54,6 +56,8 @@ class ChecklistViewController: UITableViewController , ItemDetailViewControllerD
                 }
             }
             dismissViewControllerAnimated(true, completion: nil)
+            
+            saveChecklistItems()
     }
     /*
     var row0text = "Walk the dog"
@@ -102,12 +106,13 @@ class ChecklistViewController: UITableViewController , ItemDetailViewControllerD
     // but it does not actually create that array.
     // At this point, items does not have a value yet.
     var items: [ChecklistItem]
+    var checklist:Checklist!
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         // This instantiates the array. Now items contains a valid array object,
         // but the array has no ChecklistItem objects inside it yet.
         items = [ChecklistItem]()
-        
+        /*
         // This instantiates a new ChecklistItem object. Notice the ().
         let row0item = ChecklistItem()
         row0item.text = "Walk the dog"
@@ -137,13 +142,21 @@ class ChecklistViewController: UITableViewController , ItemDetailViewControllerD
         row4item.text = "Eat ice cream"
         row4item.checked = true
         items.append(row4item)
+        */
         
-        super.init(coder: aDecoder)!
+        super.init(coder: aDecoder)
+        
+        loadChicklistItems()
+        
+        print("Documents folder is \(documentsDirectory())")
+        print("Data file path is \(dataFilePath())")
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        tableView.rowHeight = 44
+        title = checklist.name
     }
 
     override func didReceiveMemoryWarning() {
@@ -191,6 +204,8 @@ class ChecklistViewController: UITableViewController , ItemDetailViewControllerD
         let indexPaths = [indexPath]
         
         tableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
+        
+        saveChecklistItems()
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -298,6 +313,8 @@ class ChecklistViewController: UITableViewController , ItemDetailViewControllerD
             //item.checked = !item.checked
             
             configCheckmarkForCell(cell, indexPath: indexPath)
+            
+            saveChecklistItems()
 
             
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -379,6 +396,36 @@ class ChecklistViewController: UITableViewController , ItemDetailViewControllerD
 
     func find(items:[ChecklistItem],toFindItem item:ChecklistItem)->Int?{
         return items.indexOf(item)
+    }
+    
+    func documentsDirectory()->NSString{
+        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true) as [String]
+        return paths[0]
+    }
+    
+    func dataFilePath() -> String {
+        return documentsDirectory().stringByAppendingPathComponent("Checklists.plist")
+    }
+    
+    func saveChecklistItems(){
+        let data = NSMutableData()
+        let archiver = NSKeyedArchiver(forWritingWithMutableData: data)
+        archiver.encodeObject(items, forKey: "ChecklistItems")
+        archiver.finishEncoding()
+        data.writeToFile(dataFilePath(), atomically: true)
+    }
+    
+    func loadChicklistItems(){
+        let path = dataFilePath()
+        
+        if NSFileManager.defaultManager().fileExistsAtPath(path){
+            if let data = NSData(contentsOfFile: path){
+                let unarchiver = NSKeyedUnarchiver(forReadingWithData: data)
+                items = unarchiver.decodeObjectForKey("ChecklistItems") as! [ChecklistItem]
+                unarchiver.finishDecoding()
+            }
+        }
+        
     }
 
 }
