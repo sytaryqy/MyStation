@@ -8,9 +8,9 @@
 
 import UIKit
 
-class Checklist: NSObject{
+class Checklist: NSObject,NSCoding{
     var name = ""
-
+    var items = [ChecklistItem]()
     
     //var checked = false
     
@@ -20,18 +20,24 @@ class Checklist: NSObject{
     
     func encodeWithCoder(aCoder: NSCoder){
         aCoder.encodeObject(name, forKey: "Name")
+        aCoder.encodeObject(items,forKey: "Items")
         //aCoder.encodeBool(checked, forKey: "Checked")
     }
     
     required init(coder aDecoder: NSCoder){
-        name = aDecoder.decodeObjectForKey("Name") as! String
+        if let strName = aDecoder.decodeObjectForKey("Name"){
+            name = strName as! String
+        }
+        if let cliItems = aDecoder.decodeObjectForKey("Items"){
+            items = cliItems as! [ChecklistItem]
+        }
         //checked = aDecoder.decodeBoolForKey("Checked")
         super.init()
     }
     
-    override init() {
-        super.init()
-    }
+//    override init() {
+//        super.init()
+//    }
     
     init(name:String) {
         self.name = name
