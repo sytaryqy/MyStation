@@ -9,10 +9,38 @@
 import Foundation
 
 class DataModel{
+    
     var lists = [Checklist]()
+    
+    var indexOfSelectedChecklist:Int{
+        get{
+            return NSUserDefaults.standardUserDefaults().integerForKey("ChecklistIndex")
+        }
+        set{
+            NSUserDefaults.standardUserDefaults().setInteger(newValue, forKey: "ChecklistIndex")
+        }
+    }
     
     init(){
         loadChicklists()
+        registerDefault()
+        handleFirstTime()
+    }
+    
+    func registerDefault(){
+        let dictionary = ["ChecklistIndex": -1 ,"FirstTime":true]
+        NSUserDefaults.standardUserDefaults().registerDefaults(dictionary)
+    }
+    
+    func handleFirstTime(){
+        let userDefault = NSUserDefaults.standardUserDefaults()
+        let firstTime = userDefault.boolForKey("FirstTime")
+        if firstTime {
+           let checklist = Checklist(name: "List")
+            lists.append(checklist)
+            indexOfSelectedChecklist = 0
+            userDefault.setBool(false, forKey: "FirstTime")
+        }
     }
     
     func documentsDirectory()->NSString{

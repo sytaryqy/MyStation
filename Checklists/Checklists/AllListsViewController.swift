@@ -78,12 +78,16 @@ class AllListsViewController: UITableViewController , ListDetailViewControllerDe
     }
     
     func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool){
+        
+        print("willShowViewController be called")
+        
         if viewController === self {
-            NSUserDefaults.standardUserDefaults().setInteger(
-                -1, forKey: "ChecklistIndex")
+            //NSUserDefaults.standardUserDefaults().setInteger(-1, forKey: "ChecklistIndex")
+            dataModel.indexOfSelectedChecklist = -1
         }
     }
 
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,6 +97,24 @@ class AllListsViewController: UITableViewController , ListDetailViewControllerDe
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        
+        print("viewDidAppear be called")
+        
+        navigationController?.delegate = self
+        //let index = NSUserDefaults.standardUserDefaults().integerForKey("ChecklistIndex")
+        let index = dataModel.indexOfSelectedChecklist
+        
+        //defensive programming. (index >= 0 && dataModel.lists.count > index)
+        //Prevent sometiomes the dataModel.lists didn't save correctly.
+        if index >= 0 && dataModel.lists.count > index {
+            let checklist = dataModel.lists[index]
+            performSegueWithIdentifier("ShowChecklist", sender: checklist)
+        }
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -126,7 +148,8 @@ class AllListsViewController: UITableViewController , ListDetailViewControllerDe
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        NSUserDefaults.standardUserDefaults().setInteger(indexPath.row, forKey: "ChecklistIndex")
+        //NSUserDefaults.standardUserDefaults().setInteger(indexPath.row, forKey: "ChecklistIndex")
+        dataModel.indexOfSelectedChecklist = indexPath.row
         let checklist = dataModel.lists[indexPath.row]
         performSegueWithIdentifier("ShowChecklist", sender: checklist)
     }
