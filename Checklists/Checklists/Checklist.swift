@@ -57,10 +57,20 @@ class Checklist: NSObject,NSCoding{
 //    override init() {
 //        super.init()
 //    }
+    //use init(name,iconName) to initailize the chelist
+    convenience init(name:String) {
+        self.init(name:name,iconName:"No Icon")
+    }
     
-    init(name:String) {
+//    init(name:String) {
+//        self.name = name
+//        self.iconName = "No Icon"
+//        super.init()
+//    }
+    
+    init(name:String ,iconName:String) {
         self.name = name
-        self.iconName = "No Icon"
+        self.iconName = iconName
         super.init()
     }
 }
