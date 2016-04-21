@@ -60,12 +60,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         saveData()
     }
     
-    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
-        print("DidReceiveNotification:\(notification)")
-        if let notificationSting = notification.alertBody {
-            print("DidReceiveNotification:\(notificationSting)")
-        }
-    }
+    
+    //use this method to monitor the local notification
+//    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+//        print("DidReceiveNotification:\(notification)")
+//        if let notificationSting = notification.alertBody {
+//            print("DidReceiveNotification:\(notificationSting)")
+//        }
+//    }
 
     func saveData(){
         dataModel.saveChecklists()
