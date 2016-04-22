@@ -33,16 +33,20 @@ class ChecklistItem: NSObject,NSCoding{
         return nil
     }
     
-    func scheduleLocalNotification(){
-        
+    func deleteExcitingNotification(){
         let excitingNotification = notificationForThisItem()
-        
+    
         if let notification = excitingNotification{
             UIApplication.sharedApplication().cancelLocalNotification(notification)
-            
+    
             //For debug
             print("We have canceled a local notification:\(notification) for \(notification.userInfo)!")
         }
+    }
+    
+    func scheduleLocalNotification(){
+        
+        deleteExcitingNotification()
         
         if shouldRemind && dueDate.compare(NSDate()) != NSComparisonResult.OrderedAscending{         
             
@@ -81,5 +85,9 @@ class ChecklistItem: NSObject,NSCoding{
     override init() {
         itemID = DataModel.nextChecklistItemID()
         super.init()
+    }
+    
+    deinit{
+        deleteExcitingNotification()
     }
 }
