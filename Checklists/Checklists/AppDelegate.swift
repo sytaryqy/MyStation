@@ -20,18 +20,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let controller = navigateController.viewControllers[0] as! AllListsViewController
                 controller.dataModel = self.dataModel
 
-        let notificationSettings = UIUserNotificationSettings(forTypes: [.Sound , .Alert] , categories: nil)
-        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
         
-        let date = NSDate(timeIntervalSinceNow: 20)
-        
-        let localNotification = UILocalNotification()
-        localNotification.fireDate = date
-        localNotification.timeZone = NSTimeZone.defaultTimeZone()
-        localNotification.alertBody = "I am a local notification!"
-        localNotification.soundName = UILocalNotificationDefaultSoundName
-        
-        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+//        
+//        let date = NSDate(timeIntervalSinceNow: 20)
+//        
+//        let localNotification = UILocalNotification()
+//        localNotification.fireDate = date
+//        localNotification.timeZone = NSTimeZone.defaultTimeZone()
+//        localNotification.alertBody = "I am a local notification!"
+//        localNotification.soundName = UILocalNotificationDefaultSoundName
+//        
+//        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
         
         return true
     }

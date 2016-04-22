@@ -37,12 +37,24 @@ class ItemDetailViewController: UITableViewController,UITextFieldDelegate {
         delegate?.itemDetailViewControllerDidCancel(self)
     }
     
+    @IBAction func shouldeRemindTroggled(){
+        if shouldRemindSwitch.on{
+            let notificationSettings = UIUserNotificationSettings(forTypes: [.Sound , .Alert] , categories: nil)
+            UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
+        }
+    }
+    
     @IBAction func done(){
         
         if let item = itemToEdit{
             item.text = textField.text!
-            item.shouldRemind = shouldRemindSwitch.on
-            item.dueDate = dueDate
+            if item.shouldRemind != shouldRemindSwitch.on || item.dueDate != dueDate {
+                item.shouldRemind = shouldRemindSwitch.on
+                item.dueDate = dueDate
+                item.scheduleLocalNotification()
+                
+            }
+
             delegate?.itemDetailViewController(self, didFinishEditingItem: item)
         }else{
             let item = ChecklistItem()
@@ -50,6 +62,7 @@ class ItemDetailViewController: UITableViewController,UITextFieldDelegate {
             item.shouldRemind = shouldRemindSwitch.on
             item.dueDate = dueDate
             item.checked = false
+            item.scheduleLocalNotification()
             delegate?.itemDetailViewController(self, didFinishAddingItem: item)
         }
 
@@ -157,6 +170,11 @@ class ItemDetailViewController: UITableViewController,UITextFieldDelegate {
         textField.becomeFirstResponder()
     }
     
+    func textFieldDidBeginEditing(textField: UITextField) {
+        hideDatePicker()
+    }
+    
+    
     func textField(textField: UITextField,
         shouldChangeCharactersInRange range: NSRange,
         replacementString string: String) -> Bool {
@@ -210,8 +228,8 @@ class ItemDetailViewController: UITableViewController,UITextFieldDelegate {
     
     func hideDatePicker() {
         if datePickerVisible {
-            datePickerVisible = false
-        }
+        datePickerVisible = false
+        
         let indexPathDateRow = NSIndexPath(forRow: 1, inSection: 1)
         let indexPathDatePicker = NSIndexPath(forRow: 2, inSection: 1)
         if let dateCell = tableView.cellForRowAtIndexPath(indexPathDateRow) {
@@ -222,6 +240,7 @@ class ItemDetailViewController: UITableViewController,UITextFieldDelegate {
             withRowAnimation: .None)
         tableView.deleteRowsAtIndexPaths([indexPathDatePicker], withRowAnimation: .Fade)
         tableView.endUpdates()
+        }
     }
     
     func dateChanged(datePiker:UIDatePicker){

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class ChecklistItem: NSObject,NSCoding{
     var text = ""
@@ -17,6 +18,47 @@ class ChecklistItem: NSObject,NSCoding{
     
     func toggleChecked(){
         checked = !checked
+    }
+    
+    func notificationForThisItem()->UILocalNotification?{
+        if let allNotifications = UIApplication.sharedApplication().scheduledLocalNotifications{
+            for notification in allNotifications {
+                if let number = notification.userInfo?["ItemID"] as? NSNumber {
+                    if number.integerValue == itemID {
+                        return notification
+                    }
+                }
+            }
+        }
+        return nil
+    }
+    
+    func scheduleLocalNotification(){
+        
+        let excitingNotification = notificationForThisItem()
+        
+        if let notification = excitingNotification{
+            UIApplication.sharedApplication().cancelLocalNotification(notification)
+            
+            //For debug
+            print("We have canceled a local notification:\(notification) for \(notification.userInfo)!")
+        }
+        
+        if shouldRemind && dueDate.compare(NSDate()) != NSComparisonResult.OrderedAscending{         
+            
+            let localNotification = UILocalNotification()
+            localNotification.fireDate = dueDate
+            localNotification.timeZone = NSTimeZone.defaultTimeZone()
+            localNotification.alertBody = text
+            localNotification.soundName = UILocalNotificationDefaultSoundName
+            localNotification.userInfo = ["ItemID" : itemID]
+            
+            UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+            
+            //For debug
+            print("We have scheduled a local notification:\(localNotification) for \(localNotification.userInfo)!")
+        }
+
     }
     
     func encodeWithCoder(aCoder: NSCoder){
