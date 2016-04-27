@@ -158,7 +158,7 @@ class ChecklistViewController: UITableViewController , ItemDetailViewControllerD
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        tableView.rowHeight = 44
+        tableView.rowHeight = 65
         title = checklist.name
     }
 
@@ -393,13 +393,31 @@ class ChecklistViewController: UITableViewController , ItemDetailViewControllerD
     }
     
     func configureTextForCell(cell:UITableViewCell,withChecklistItem item:ChecklistItem){
-        let label = cell.viewWithTag(1000) as! UILabel
+        let labelTitle = cell.viewWithTag(1000) as! UILabel
         
         //used for debug
         //label.text = "\(item.itemID):\(item.text)"
         
-        label.text = item.text
+        labelTitle.text = item.text
+        
+        let labelDueDate = cell.viewWithTag(1002) as! UILabel
+        updateDueDateLabel(willUpdateDueDateLable: labelDueDate, updateContentFormThisItem: item)
+        }
+    
+    func updateDueDateLabel(willUpdateDueDateLable labelDueDate:UILabel,updateContentFormThisItem item:ChecklistItem){
+        
+        if  item.shouldRemind {
+            let formatter = NSDateFormatter()
+            formatter.dateStyle = .MediumStyle
+            formatter.timeStyle = .ShortStyle
+            labelDueDate.text = formatter.stringFromDate(item.dueDate)
+        }else{
+            labelDueDate.text = "Not yet"
+        }
+        labelDueDate.textColor = UIColor(white: 0, alpha: 0.5)
+
     }
+    
     
 
     func find(items:[ChecklistItem],toFindItem item:ChecklistItem)->Int?{
