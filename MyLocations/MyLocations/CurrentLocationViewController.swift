@@ -34,8 +34,15 @@ class CurrentLocationViewController: UIViewController,CLLocationManagerDelegate 
             return
         }
         
-        startLocationManager()
+        if updatingLocation{
+            stopLocationManager()
+        }else{
+            location = nil
+            lastLocationError = nil
+            startLocationManager()
+        }
         updateLabels()
+        configerGetButton()
     }
     
     var location:CLLocation?
@@ -48,6 +55,7 @@ class CurrentLocationViewController: UIViewController,CLLocationManagerDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         updateLabels()
+        configerGetButton()
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -74,12 +82,32 @@ class CurrentLocationViewController: UIViewController,CLLocationManagerDelegate 
     
     func locationManager(locationManager: CLLocationManager,
         didUpdateLocations locations: [CLLocation]){
-                //let newLocation = locations.last
-                lastLocationError = nil
-                location = locations.last
-                updateLabels()
-                print("didUpdateLocations \(locations.last)")
             
+            print("didUpdateLocations \(locations.last)")
+            
+            if let newLocation = locations.last{
+            
+                if newLocation.timestamp.timeIntervalSinceNow < -5 {
+                    return
+                }
+            
+                if newLocation.horizontalAccuracy < 0{
+                    return
+                }
+            
+                if location == nil || location!.horizontalAccuracy > newLocation.horizontalAccuracy{
+                
+                lastLocationError = nil
+                location = newLocation
+                updateLabels()
+                    if newLocation.horizontalAccuracy <= locationManager.desiredAccuracy{
+                        print("We are done!")
+                        stopLocationManager()
+                        configerGetButton()
+                    }
+                }
+
+            }
     }
     
     func locationManager(locationManager: CLLocationManager,
@@ -91,7 +119,7 @@ class CurrentLocationViewController: UIViewController,CLLocationManagerDelegate 
             lastLocationError = error
             stopLocationManager()
             updateLabels()
-            
+            configerGetButton()
     }
     
     func updateLabels(){
@@ -139,6 +167,14 @@ class CurrentLocationViewController: UIViewController,CLLocationManagerDelegate 
             locationManager.stopUpdatingLocation()
             locationManager.delegate = nil
             updatingLocation = false
+        }
+    }
+    
+    func configerGetButton(){
+        if updatingLocation{
+            getButton.setTitle("STOP", forState: UIControlState.Normal)
+        }else{
+            getButton.setTitle("Get My Location", forState: UIControlState.Normal)
         }
     }
 
