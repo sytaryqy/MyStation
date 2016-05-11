@@ -13,6 +13,7 @@
 		4CF44CAD1CD05CE600462101 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CF44CAB1CD05CE600462101 /* Main.storyboard */; };
 		4CF44CAF1CD05CE600462101 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CF44CAE1CD05CE600462101 /* Assets.xcassets */; };
 		4CF44CB21CD05CE600462101 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CF44CB01CD05CE600462101 /* LaunchScreen.storyboard */; };
+		4CFBC1861CE1C030006DF46D /* LocationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFBC1851CE1C030006DF46D /* LocationDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		4CF44CAE1CD05CE600462101 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4CF44CB11CD05CE600462101 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4CF44CB31CD05CE600462101 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4CFBC1851CE1C030006DF46D /* LocationDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				4CF44CAE1CD05CE600462101 /* Assets.xcassets */,
 				4CF44CB01CD05CE600462101 /* LaunchScreen.storyboard */,
 				4CF44CB31CD05CE600462101 /* Info.plist */,
+				4CFBC1851CE1C030006DF46D /* LocationDetailsViewController.swift */,
 			);
 			path = MyLocations;
 			sourceTree = "<group>";
@@ -139,6 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CFBC1861CE1C030006DF46D /* LocationDetailsViewController.swift in Sources */,
 				4CF44CAA1CD05CE600462101 /* SecondViewController.swift in Sources */,
 				4CF44CA61CD05CE600462101 /* AppDelegate.swift in Sources */,
 				4CF44CA81CD05CE600462101 /* CurrentLocationViewController.swift in Sources */,

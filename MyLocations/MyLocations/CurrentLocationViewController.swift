@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 
 
-class CurrentLocationViewController: UIViewController,CLLocationManagerDelegate {
+class CurrentLocationViewController: UIViewController,CLLocationManagerDelegate,LocationDetailsViewControllerDelegate {
 
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var latitudeLabel: UILabel!
@@ -59,6 +59,8 @@ class CurrentLocationViewController: UIViewController,CLLocationManagerDelegate 
     var performingReverseGeocoding = false
     var lastGeocodingError: NSError?
     
+    var timer : NSTimer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateLabels()
@@ -70,6 +72,24 @@ class CurrentLocationViewController: UIViewController,CLLocationManagerDelegate 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func locationDetailsViewControllerDidCancel(controller:LocationDetailsViewController){
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "TagLocation"{
+            
+            let navigater = segue.destinationViewController as! UINavigationController
+            let controller = navigater.topViewController as! LocationDetailsViewController
+            controller.delegate = self
+            if location != nil{
+                controller.coordinate = location!.coordinate
+                controller.placemark = self.placemark
+            }
+            //print("prepareForSegue")
+        }
     }
     
     
@@ -214,6 +234,7 @@ class CurrentLocationViewController: UIViewController,CLLocationManagerDelegate 
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
             updatingLocation = true
+            timer = NSTimer.scheduledTimerWithTimeInterval(60, target: self, selector: "didTimeOut", userInfo: nil, repeats: false)
         }
     }
     
@@ -229,6 +250,20 @@ class CurrentLocationViewController: UIViewController,CLLocationManagerDelegate 
             locationManager.stopUpdatingLocation()
             locationManager.delegate = nil
             updatingLocation = false
+            if let timer = timer{
+                timer.invalidate()
+            }
+        }
+    }
+    
+    func didTimeOut() {
+        print("*** Time out")
+        if location == nil {
+            stopLocationManager()
+            lastLocationError = NSError(domain: "MyLocationsErrorDomain",
+                code: 1, userInfo: nil)
+            updateLabels()
+            configureGetButton()
         }
     }
     
